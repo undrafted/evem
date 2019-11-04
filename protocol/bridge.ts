@@ -26,6 +26,15 @@ export default class Bridge {
     this.callbacks[event] = callback;
   };
 
+  disconnect = (event: BridgeEvent) => {
+    if(this.callbacks[event]) {
+      delete this.callbacks[event];
+      return;
+    }
+
+    throw new Error('Event is not registered.');
+  }
+
   dispatch = (event: BridgeEvent) => {
     const callback = this.callbacks[event];
     if (callback) {
