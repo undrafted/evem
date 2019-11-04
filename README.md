@@ -1,2 +1,2 @@
 # bridge
-Micro-frontend module bridger
+Micro-frontend modules connector
