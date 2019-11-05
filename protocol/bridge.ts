@@ -52,15 +52,4 @@ export default class Bridge {
       throw new Error(`Event ${event}: is not a registered bridge event.`);
     }
   };
-
-  activate = () => {
-    if (window) {
-      window.__bridge__ = Bridge.instance;
-      return this;
-    }
-
-    throw new Error(
-      "Window is not defined. Please make sure you are on the right browser environment to use this module"
-    );
-  };
 }
