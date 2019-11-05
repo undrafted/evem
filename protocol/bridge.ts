@@ -8,7 +8,13 @@ export default class Bridge {
       return Bridge.instance;
     }
 
+    if (window.__bridge__) {
+      Bridge.instance = window.__bridge__;
+      return Bridge.instance;
+    }
+
     Bridge.instance = this;
+    window.__bridge__ = Bridge.instance;
   }
 
   callbacks: { [key in BridgeEvent]: () => void } = {};
@@ -27,13 +33,13 @@ export default class Bridge {
   };
 
   disconnect = (event: BridgeEvent) => {
-    if(this.callbacks[event]) {
+    if (this.callbacks[event]) {
       delete this.callbacks[event];
       return;
     }
 
-    throw new Error('Event is not registered.');
-  }
+    throw new Error("Event is not registered.");
+  };
 
   dispatch = (event: BridgeEvent) => {
     const callback = this.callbacks[event];
@@ -46,9 +52,7 @@ export default class Bridge {
 
   activate = () => {
     if (window) {
-      window.__bridge__ = {
-        dispatch: this.dispatch
-      };
+      window.__bridge__ = Bridge.instance;
       return;
     }
 
