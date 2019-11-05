@@ -26,25 +26,28 @@ export default class Bridge {
       );
     }
     this.callbacks[event] = callback;
+    return this;
   };
 
   overwrite: BridgeEventCallback = (event, callback) => {
     this.callbacks[event] = callback;
+    return this;
   };
 
-  disconnect = (event: BridgeEvent) => {
+  disconnect: BridgeEventCallback = (event: BridgeEvent) => {
     if (this.callbacks[event]) {
       delete this.callbacks[event];
-      return;
+      return this;
     }
 
     throw new Error("Event is not registered.");
   };
 
-  dispatch = (event: BridgeEvent) => {
+  dispatch: BridgeEventCallback = (event: BridgeEvent) => {
     const callback = this.callbacks[event];
     if (callback) {
       callback();
+      return this;
     } else {
       throw new Error(`Event ${event}: is not a registered bridge event.`);
     }
@@ -53,7 +56,7 @@ export default class Bridge {
   activate = () => {
     if (window) {
       window.__bridge__ = Bridge.instance;
-      return;
+      return this;
     }
 
     throw new Error(
