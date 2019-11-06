@@ -1,1 +1,1 @@
-export { default as Bridge } from "./protocol/bridge";
+export { default as Bridge } from "./src/bridge";
