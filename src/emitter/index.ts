@@ -44,6 +44,20 @@ export default class Emitter {
           break;
         }
       }
+
+      return this;
     }
+
+    throw new Error(`Event ${customEvent}, has no active listeners`);
+  };
+
+  emit = (customEvent: EmitterEvent, data: any = {}) => {
+    const eventCbArray = this.customEventsCallbacks[customEvent];
+    if (eventCbArray) {
+      this.customEventsCallbacks[customEvent].forEach(cb => cb(data));
+      return this;
+    }
+
+    throw new Error(`Event ${customEvent}, has no active listeners`);
   };
 }

@@ -5,6 +5,8 @@ declare global {
 }
 
 export type EmitterEvent = string;
-export type EmitterCallback = () => void;
+export type EmitterCallback = (data?: any) => void;
 
-export type EmitterCallbacksObject = { [key in string]: (() => void)[] };
+export type EmitterCallbacksObject = {
+  [key in EmitterEvent]: EmitterCallback[]
+};
