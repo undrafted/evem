@@ -1,4 +1,4 @@
-import { BridgeEvent, BridgeEventCallback } from "./types";
+import { BridgeEvent, BridgeEventCallback, BridgeCallback } from "./types";
 
 export default class Bridge {
   static instance: Bridge = null;
@@ -17,7 +17,7 @@ export default class Bridge {
     window.__bridge__ = Bridge.instance;
   }
 
-  callbacks: { [key in BridgeEvent]: () => void } = {};
+  callbacks: { [key in BridgeEvent]: BridgeCallback } = {};
 
   register: BridgeEventCallback = (event, callback) => {
     if (this.callbacks[event]) {
@@ -43,10 +43,10 @@ export default class Bridge {
     throw new Error("Event is not registered.");
   };
 
-  dispatch: BridgeEventCallback = (event: BridgeEvent) => {
+  dispatch: BridgeEventCallback = (event: BridgeEvent, data: any = {}) => {
     const callback = this.callbacks[event];
     if (callback) {
-      callback();
+      callback(data);
       return this;
     } else {
       throw new Error(`Event ${event}: is not a registered bridge event.`);

@@ -7,8 +7,9 @@ declare global {
 }
 
 export type BridgeEvent = string;
+export type BridgeCallback = (data?: any) => void;
 
 export type BridgeEventCallback = (
   event: BridgeEvent,
-  callback: () => void
+  callback: BridgeCallback
 ) => Bridge;
