@@ -13,3 +13,5 @@ export type BridgeEventCallback = (
   event: BridgeEvent,
   callback: BridgeCallback
 ) => Bridge;
+
+export type BridgeDispatch = (event: BridgeEvent, data?: {}) => Bridge;
