@@ -1,6 +1,6 @@
 # bridge
 
-Micro-frontend modules connectors (Global pub-sub event emitters)
+Global event emitter for Micro-frontends
 
 ```
 yarn global add parcel
