@@ -24,18 +24,17 @@ const CLICK_EVENT = "click-event";
 const clickCallback = ({ from }: ThisCBData) => {
   alert(`clicked from ${from}!`);
 };
-// adding a callback listener
+// adding a callback 
 emitter.on(CLICK_EVENT, clickCallback);
 
-// removing a callback listener
-emitter.on(CLICK_EVENT, clickCallback);
-
-// emitting an event (anywhere, outside of your app probably...)
+// emitting an event (anywhere, outside of your app, probably...)
 myButton.addEventListener("click", () => {
   const data: ThisCBData = { from: "me" };
   emitter.emit(CLICK_EVENT, data);
-  
 });
+
+// removing a callback 
+emitter.removeOn(CLICK_EVENT, clickCallback);
 ```
 
 ### Bridge
