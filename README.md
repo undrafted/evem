@@ -31,6 +31,9 @@ myButton.addEventListener("click", () => {
 // removing a callback
 emitter.removeOn(CLICK_EVENT, clickCallback);
 
+// removing an event and all its callbacks
+emitter.removeEvent(CLICK_EVENT);
+
 // or if you prefer to not keep track of listener callbacks, `on` returns a callback remover
 const removeClickListener = emitter.on(CLICK_EVENT, clickCallback);
 removeClickListener();

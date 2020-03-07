@@ -59,6 +59,17 @@ export default class Evem {
     }
   };
 
+  removeEvent = (customEvent: EmitterEvent) => {
+    const eventCbArray = this.customEventsCallbacks[customEvent];
+    if (eventCbArray) {
+      delete this.customEventsCallbacks[customEvent];
+    } else {
+      if (this.debug) {
+        console.warn(`You are trying to remove callbacks for an unregistered event: ${customEvent}`);
+      }
+    }
+  }
+
   emit = (customEvent: EmitterEvent, data: any = {}): Evem => {
     const eventCbArray = this.customEventsCallbacks[customEvent];
     if (eventCbArray) {
