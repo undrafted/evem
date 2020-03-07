@@ -61,6 +61,6 @@ export default class Evem {
       return this;
     }
 
-    throw new Error(`Event ${customEvent}, has no active listeners`);
+    console.warn(`Event ${customEvent}, has no active listeners`);
   };
 }
