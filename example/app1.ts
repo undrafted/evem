@@ -1,8 +1,9 @@
-import { Evem } from "../src";
+import Evem from "../src";
 
 {
   const emitter = new Evem();
-  const app = document.getElementById("app1");
+  let app = document.getElementById("app1") as HTMLElement;
+
 
   const button = document.createElement("button");
   button.innerHTML = "Click me from app 1";

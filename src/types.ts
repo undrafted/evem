@@ -4,14 +4,14 @@ declare global {
   }
 }
 
-export type EvemOptions = {
-  debug?: boolean
+export interface EvemOptions {
+  debug: boolean
 };
 
 export type Event = string;
 export type Callback = (data?: any) => void;
 
-interface CallbackOptions {
+export interface CallbackOptions {
   once?: boolean
 }
 

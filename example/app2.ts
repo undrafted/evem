@@ -1,4 +1,4 @@
-import { Evem } from "../src";
+import Evem from "../src";
 
 {
   const emitter = new Evem();
