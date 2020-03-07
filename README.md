@@ -2,16 +2,11 @@
 
 Simple global event emitter for Micro-frontends
 
-```
-yarn global add parcel
-yarn
-yarn start
-```
-
 ## Usage
 
 ```js
-// Emitter class is a singleton
+// Emitter class is a singleton: one instance for the while app
+// take the instance by using new
 const emitter = new Evem();
 
 interface ThisCBData {
@@ -35,7 +30,15 @@ myButton.addEventListener("click", () => {
 // removing a callback
 emitter.removeOn(CLICK_EVENT, clickCallback);
 
-// or if you prefer to not save a listener callback, `on` returns a callback remover
+// or if you prefer to not keep track of listener callbacks, `on` returns a callback remover
 const removeClickListener = emitter.on(CLICK_EVENT, clickCallback);
 removeClickListener();
+```
+
+## Development
+
+```
+yarn global add parcel
+yarn
+yarn start
 ```
