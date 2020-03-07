@@ -26,11 +26,16 @@ const clickCallback = ({ from }: ThisCBData) => {
 emitter.on(CLICK_EVENT, clickCallback);
 
 // emitting an event (anywhere, outside of your app, probably...)
+// emitter.emit returns the Evem instance, so its chainable
 myButton.addEventListener("click", () => {
   const data: ThisCBData = { from: "me" };
-  emitter.dispatch(CLICK_EVENT, data);
+  emitter.emit(CLICK_EVENT, data).emit(CART_UPDATE, data);
 });
 
 // removing a callback
 emitter.removeOn(CLICK_EVENT, clickCallback);
+
+// or if you prefer to not save a listener callback, `on` returns a callback remover
+const removeClickListener = emitter.on(CLICK_EVENT, clickCallback);
+removeClickListener();
 ```

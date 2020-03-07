@@ -1,4 +1,4 @@
-import { EmitterEvent, EmitterCallbacksObject, EmitterCallback } from "./types";
+import { EmitterEvent, EmitterCallbacksObject, EmitterCallback, RemoveEventListener } from "./types";
 
 export default class Evem {
   static instance: Evem = null;
@@ -18,40 +18,43 @@ export default class Evem {
     window.__evem__ = Evem.instance;
   }
 
-  on = (customEvent: EmitterEvent, callback: EmitterCallback) => {
-    const eventCbObject = this.customEventsCallbacks[customEvent];
+  on = (customEvent: EmitterEvent, callback: EmitterCallback): RemoveEventListener => {
+    const eventCbArray = this.customEventsCallbacks[customEvent];
 
-    if (eventCbObject) {
-      eventCbObject.push(callback);
+    if (eventCbArray) {
+      eventCbArray.push(callback);
     } else {
       this.customEventsCallbacks[customEvent] = [callback];
     }
 
-    return this;
+    return () => {
+      this.removeOn(customEvent, callback)
+    };
   };
 
-  removeOn = (customEvent: EmitterEvent, callback: EmitterCallback) => {
+  removeOn: RemoveEventListener = (customEvent: EmitterEvent, callback: EmitterCallback) => {
     const eventCbArray = this.customEventsCallbacks[customEvent];
     if (eventCbArray) {
       for (let i = 0; i < eventCbArray.length; i++) {
         if (eventCbArray[i] === callback) {
           const newEventCbArray = eventCbArray.slice(i, 1);
+
           if (newEventCbArray.length > 0) {
             this.customEventsCallbacks[customEvent] = newEventCbArray;
+
           } else {
             delete this.customEventsCallbacks[customEvent];
           }
+
           break;
         }
       }
-
-      return this;
+    } else {
+      console.warn(`Event ${customEvent}, has no active listeners`);
     }
-
-    throw new Error(`Event ${customEvent}, has no active listeners`);
   };
 
-  emit = (customEvent: EmitterEvent, data: any = {}) => {
+  emit = (customEvent: EmitterEvent, data: any = {}): Evem => {
     const eventCbArray = this.customEventsCallbacks[customEvent];
     if (eventCbArray) {
       this.customEventsCallbacks[customEvent].forEach(cb => cb(data));

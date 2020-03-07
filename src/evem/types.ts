@@ -10,3 +10,5 @@ export type EmitterCallback = (data?: any) => void;
 export type EmitterCallbacksObject = {
   [key in EmitterEvent]: EmitterCallback[]
 };
+
+export type RemoveEventListener = (customEvent: EmitterEvent, callback: EmitterCallback) => void;
