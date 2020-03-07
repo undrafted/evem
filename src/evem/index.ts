@@ -36,7 +36,18 @@ export default class Evem {
     const eventCbArray = this.customEventsCallbacks[customEvent];
 
     if (eventCbArray) {
-      eventCbArray.push({ callback });
+      let isAlreadyAdded = false;
+
+      for (let i = 0; i <= eventCbArray.length; i++) {
+        if (eventCbArray[i].callback === callback) {
+          isAlreadyAdded = true;
+          break;
+        }
+      }
+
+      if (!isAlreadyAdded) {
+        eventCbArray.push({ callback });
+      }
     } else {
       this.customEventsCallbacks[customEvent] = [
         { callback, once: cbOptions.once }
