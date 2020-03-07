@@ -21,6 +21,9 @@ const clickCallback = ({ from }: ThisCBData) => {
 // adding a callback
 emitter.on(CLICK_EVENT, clickCallback);
 
+// adding a one-time callback
+emitter.once(CLICK_EVENT, clickCallback);
+
 // emitting an event (anywhere, outside of your app, probably...)
 // emitter.emit returns the Evem instance, so its chainable
 myButton.addEventListener("click", () => {

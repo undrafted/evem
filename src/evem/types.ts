@@ -4,15 +4,26 @@ declare global {
   }
 }
 
-export type Options = {
+export type EvemOptions = {
   debug?: boolean
 };
 
-export type EmitterEvent = string;
-export type EmitterCallback = (data?: any) => void;
+export type Event = string;
+export type Callback = (data?: any) => void;
+
+interface CallbackOptions {
+  once?: boolean
+}
+
+export interface EvemCallback extends CallbackOptions {
+  callback: Callback;
+}
+
 
 export type EmitterCallbacksObject = {
-  [key in EmitterEvent]: EmitterCallback[]
+  [key in Event]: EvemCallback[]
 };
 
-export type RemoveEventListener = (customEvent: EmitterEvent, callback: EmitterCallback) => void;
+export type RemoveEventListener = (customEvent: Event, callback: Callback) => void;
+export type BaseAddEventListener = (customEvent: Event, callback: Callback, options?: CallbackOptions) => RemoveEventListener;
+export type AddEventListener = (customEvent: Event, callback: Callback) => RemoveEventListener;
