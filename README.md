@@ -2,6 +2,12 @@
 
 Tiny global event emitter for Micro-frontends
 
+## Installation
+
+```
+npm install evem
+```
+
 ## Usage
 
 #### Creating an Evem instance
