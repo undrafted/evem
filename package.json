@@ -17,5 +17,13 @@
   "scripts": {
     "start": "parcel ./example/index.html",
     "build": "tsc"
-  }
+  },
+  "keywords": [
+    "pubsub",
+    "event emitter",
+    "events",
+    "global event emitter",
+    "typescript",
+    "microfrontends"
+  ]
 }
