@@ -1,13 +1,14 @@
 # Evem
 
-Simple global event emitter for Micro-frontends
+Tiny global singleton event emitter for Micro-frontends
 
 ## Usage
 
 ```js
 // Emitter class is a singleton: one instance for the while app
 // take the instance by using new
-const emitter = new Evem();
+// you can optionally pass a debug option for friendly console warns
+const emitter = new Evem({ debug: true });
 
 interface ThisCBData {
   from: string;

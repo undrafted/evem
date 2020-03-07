@@ -1,10 +1,11 @@
-import { EmitterEvent, EmitterCallbacksObject, EmitterCallback, RemoveEventListener } from "./types";
+import { Options, EmitterEvent, EmitterCallbacksObject, EmitterCallback, RemoveEventListener } from "./types";
 
 export default class Evem {
   static instance: Evem = null;
+  private debug: boolean = false;
   private customEventsCallbacks: EmitterCallbacksObject = {};
 
-  constructor() {
+  constructor(options: Options = { debug: false }) {
     if (Evem.instance) {
       return Evem.instance;
     }
@@ -15,6 +16,7 @@ export default class Evem {
     }
 
     Evem.instance = this;
+    this.debug = options.debug;
     window.__evem__ = Evem.instance;
   }
 
@@ -34,6 +36,7 @@ export default class Evem {
 
   removeOn: RemoveEventListener = (customEvent: EmitterEvent, callback: EmitterCallback) => {
     const eventCbArray = this.customEventsCallbacks[customEvent];
+
     if (eventCbArray) {
       for (let i = 0; i < eventCbArray.length; i++) {
         if (eventCbArray[i] === callback) {
@@ -50,7 +53,9 @@ export default class Evem {
         }
       }
     } else {
-      console.warn(`Event ${customEvent}, has no active listeners`);
+      if (this.debug) {
+        console.warn(`You are trying to remove a callback from event: ${customEvent} that has no active listeners`);
+      }
     }
   };
 
@@ -61,6 +66,8 @@ export default class Evem {
       return this;
     }
 
-    console.warn(`Event ${customEvent}, has no active listeners`);
+    if (this.debug) {
+      console.warn(`You are trying to emit an event: ${customEvent} without active listeners`);
+    }
   };
 }

@@ -4,6 +4,10 @@ declare global {
   }
 }
 
+export type Options = {
+  debug?: boolean
+};
+
 export type EmitterEvent = string;
 export type EmitterCallback = (data?: any) => void;
 
