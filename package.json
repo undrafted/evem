@@ -4,6 +4,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Jermie Domingo <github.com/undrafted>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/undrafted/evem"
+  },
   "license": "MIT",
   "dependencies": {
     "ts-node": "^8.4.1",
