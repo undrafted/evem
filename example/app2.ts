@@ -1,8 +1,8 @@
-import { Bridge } from "../src";
+import { Evem } from "../src";
 
 {
-  const bridge = new Bridge();
-  bridge.register("button-click", () => {
+  const emitter = new Evem();
+  emitter.on("button-click", () => {
     alert("'button-click' event is dispatched, received in app 2");
   });
 }

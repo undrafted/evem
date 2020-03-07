@@ -1,21 +1,21 @@
 import { EmitterEvent, EmitterCallbacksObject, EmitterCallback } from "./types";
 
-export default class Emitter {
-  static instance: Emitter = null;
+export default class Evem {
+  static instance: Evem = null;
   customEventsCallbacks: EmitterCallbacksObject = {};
 
   constructor() {
-    if (Emitter.instance) {
-      return Emitter.instance;
+    if (Evem.instance) {
+      return Evem.instance;
     }
 
-    if (window.__emitter__) {
-      Emitter.instance = window.__emitter__;
-      return Emitter.instance;
+    if (window.__evem__) {
+      Evem.instance = window.__evem__;
+      return Evem.instance;
     }
 
-    Emitter.instance = this;
-    window.__emitter__ = Emitter.instance;
+    Evem.instance = this;
+    window.__evem__ = Evem.instance;
   }
 
   on = (customEvent: EmitterEvent, callback: EmitterCallback) => {

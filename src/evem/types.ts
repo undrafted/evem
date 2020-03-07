@@ -1,6 +1,6 @@
 declare global {
   interface Window {
-    __emitter__: any;
+    __evem__: any;
   }
 }
 
