@@ -2,7 +2,7 @@ import { EmitterEvent, EmitterCallbacksObject, EmitterCallback, RemoveEventListe
 
 export default class Evem {
   static instance: Evem = null;
-  customEventsCallbacks: EmitterCallbacksObject = {};
+  private customEventsCallbacks: EmitterCallbacksObject = {};
 
   constructor() {
     if (Evem.instance) {
