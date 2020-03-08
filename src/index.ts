@@ -39,7 +39,7 @@ export default class Evem {
     if (eventCbArray) {
       let isAlreadyAdded = false;
 
-      for (let i = 0; i <= eventCbArray.length; i++) {
+      for (let i = 0; i < eventCbArray.length; i++) {
         if (eventCbArray[i].callback === callback) {
           isAlreadyAdded = true;
           break;
@@ -47,7 +47,7 @@ export default class Evem {
       }
 
       if (!isAlreadyAdded) {
-        eventCbArray.push({ callback });
+        eventCbArray.push({ callback, once: cbOptions.once });
       }
     } else {
       this.customEventsCallbacks[customEvent] = [
