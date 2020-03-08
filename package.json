@@ -1,6 +1,6 @@
 {
   "name": "evem",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Jermie Domingo <github.com/undrafted>",
@@ -13,7 +13,7 @@
     "ts-node": "^8.4.1",
     "typescript": "^3.8.3"
   },
-  "prepublish": "build",
+  "prepublish": "test && build",
   "scripts": {
     "start": "parcel ./example/index.html",
     "build": "tsc",
