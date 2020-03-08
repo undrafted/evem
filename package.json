@@ -1,6 +1,6 @@
 {
   "name": "evem",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Jermie Domingo <github.com/undrafted>",
@@ -16,7 +16,8 @@
   "prepublish": "build",
   "scripts": {
     "start": "parcel ./example/index.html",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest tests"
   },
   "keywords": [
     "pubsub",
@@ -25,5 +26,10 @@
     "global event emitter",
     "typescript",
     "microfrontends"
-  ]
+  ],
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1"
+  }
 }

@@ -25,5 +25,5 @@ export type EmitterCallbacksObject = {
 };
 
 export type RemoveEventListener = (customEvent: Event, callback: Callback) => void;
-export type BaseAddEventListener = (customEvent: Event, callback: Callback, options?: CallbackOptions) => RemoveEventListener;
-export type AddEventListener = (customEvent: Event, callback: Callback) => RemoveEventListener;
+export type BaseAddEventListener = (customEvent: Event, callback: Callback, options?: CallbackOptions) => Function;
+export type AddEventListener = (customEvent: Event, callback: Callback) => Function;
