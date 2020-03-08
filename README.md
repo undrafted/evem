@@ -75,3 +75,7 @@ yarn global add parcel
 yarn
 yarn start
 ```
+
+## License
+
+MIT
