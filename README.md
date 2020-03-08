@@ -1,6 +1,6 @@
 # Evem
 
-Tiny global event emitter for Micro-frontends
+Tiny global event emitter for Micro-frontends (or if you need to talk to other js files in your document)
 
 ## Installation
 
@@ -26,8 +26,9 @@ interface ThisCBData {
 }
 
 const CLICK_EVENT = "click-event";
-const clickCallback = ({ from }: ThisCBData) => {
-  alert(`clicked from ${from}!`);
+// the data is what is passed in the 2nd argument during emit(EVENT, data);
+const clickCallback = (data: ThisCBData) => {
+  alert(`clicked from ${data.from}!`);
 };
 ```
 
