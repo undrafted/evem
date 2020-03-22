@@ -4,8 +4,13 @@ Tiny global event emitter for Micro-frontends (or if you need to talk to other j
 
 ## Installation
 
+#### npm
 ```
 npm install evem
+```
+#### yarn
+```
+yarn add evem
 ```
 
 ## Usage
