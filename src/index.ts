@@ -27,6 +27,7 @@ export default class Evem {
     Evem.instance = this;
     this.debug = options.debug;
     window.__evem__ = Evem.instance;
+    return this;
   }
 
   private addEventListener: BaseAddEventListener = (
@@ -74,7 +75,10 @@ export default class Evem {
     if (eventCbArray) {
       for (let i = 0; i < eventCbArray.length; i++) {
         if (eventCbArray[i].callback === callback) {
-          const newEventCbArray = [...eventCbArray.slice(0, i), ...eventCbArray.slice(i + 1)];
+          const newEventCbArray = [
+            ...eventCbArray.slice(0, i),
+            ...eventCbArray.slice(i + 1)
+          ];
 
           if (newEventCbArray.length > 0) {
             this.customEventsCallbacks[customEvent] = newEventCbArray;
