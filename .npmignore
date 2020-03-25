@@ -3,3 +3,5 @@ src
 tests
 tsconfig.json
 jest.config.js
+.cache
+package-lock.json
