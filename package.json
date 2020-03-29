@@ -9,8 +9,8 @@
     "url": "https://github.com/undrafted/evem"
   },
   "license": "MIT",
-  "prepublish": "test && build",
   "scripts": {
+    "prepublish": "rm -rf dist && yarn test && yarn build",
     "start": "parcel ./example/index.html",
     "build": "tsc",
     "test": "jest tests"
