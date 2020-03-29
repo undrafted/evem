@@ -19,7 +19,7 @@ describe('Evem', () => {
     const ev1 = new Evem();
     const ev2 = new Evem();
 
-    expect(ev1).toBe('a');
+    expect(ev1).toBe(ev2);
   });
 
   it('should call an event callback', () => {
