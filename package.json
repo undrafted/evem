@@ -10,9 +10,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepublish": "rm -rf dist && yarn test && yarn build",
+    "prepublish": "yarn test && yarn build",
     "start": "parcel ./example/index.html",
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "test": "jest tests"
   },
   "keywords": [
