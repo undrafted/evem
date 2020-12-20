@@ -1,6 +1,6 @@
 {
   "name": "evem",
-  "version": "1.0.17",
+  "version": "1.0.20",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Jermie Domingo <github.com/undrafted>",
@@ -30,8 +30,5 @@
     "ts-jest": "^25.2.1",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
-  },
-  "resolutions": {
-    "node-forge": "^0.10.0"
   }
 }
